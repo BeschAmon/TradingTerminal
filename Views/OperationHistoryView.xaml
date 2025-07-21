@@ -8,10 +8,11 @@
              mc:Ignorable="d"
              Background="Transparent">
 
-    <Border CornerRadius="8" Background="White" BorderBrush="#E0E0E0" BorderThickness="1">
+    <Border CornerRadius="8" 
+            Background="#FF252526" 
+            BorderBrush="#FF3E3E40" 
+            BorderThickness="1">
         <Grid>
-
-
             <!-- Список операций -->
             <ScrollViewer Margin="0,40,0,0">
                 <ItemsControl ItemsSource="{Binding Operations}">
@@ -20,17 +21,23 @@
                             <Grid Margin="0,5">
                                 <!-- Дата -->
                                 <TextBlock Text="{Binding FormattedDate}" 
-                                           Foreground="#666" 
+                                           Foreground="#FFA0A0A0" 
                                            Margin="15,5,0,0"
                                            FontSize="12"/>
 
                                 <!-- Карточка операции -->
                                 <Border Margin="10,25,10,5" 
-                                        Background="White" 
+                                        Background="#FF1E1E1E" 
                                         CornerRadius="6"
                                         BorderThickness="1" 
-                                        BorderBrush="#EEE"
+                                        BorderBrush="#FF3E3E40"
                                         Padding="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="10" 
+                                                          Opacity="0.3" 
+                                                          ShadowDepth="2" 
+                                                          Color="Black"/>
+                                    </Border.Effect>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
@@ -46,6 +53,7 @@
                                                 Background="{Binding IconColor}">
                                             <TextBlock Text="{Binding IconCode}" 
                                                        FontSize="20"
+                                                       Foreground="White"
                                                        HorizontalAlignment="Center"
                                                        VerticalAlignment="Center"/>
                                         </Border>
@@ -53,9 +61,10 @@
                                         <!-- Описание -->
                                         <StackPanel Grid.Column="1" Margin="10,0">
                                             <TextBlock Text="{Binding Title}" 
+                                                       Foreground="White"
                                                        FontWeight="SemiBold"/>
                                             <TextBlock Text="{Binding Description}" 
-                                                       Foreground="#666" 
+                                                       Foreground="#FFA0A0A0" 
                                                        FontSize="12"/>
                                         </StackPanel>
 
