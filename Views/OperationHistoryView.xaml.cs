@@ -12,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TradingTerminal.ViewModels;
 
-namespace TradingTerminal.Views.Documents
+namespace TradingTerminal.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ChartDocument.xaml
+    /// Логика взаимодействия для OperationHistoryView.xaml
     /// </summary>
-    public partial class ChartDocument : UserControl
+    public partial class OperationHistoryView : UserControl
     {
-        public ChartDocument()
+        public OperationHistoryView()
         {
             InitializeComponent();
-            DataContext = new ViewModels.Documents.ChartDocument();
+            DataContext = new OperationHistoryViewModel();
         }
     }
 }
