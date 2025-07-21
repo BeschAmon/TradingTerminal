@@ -1,0 +1,112 @@
+﻿<Window x:Class="TradingTerminal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ad="https://github.com/Dirkster99/AvalonDock"
+        xmlns:local="clr-namespace:TradingTerminal"
+        mc:Ignorable="d"
+        Title="Торговый терминал" 
+        Height="800" 
+        Width="1200"
+        WindowState="Maximized">
+
+    <Grid>
+        <ad:DockingManager x:Name="DockingManager"
+                          AllowMixedOrientation="True"
+                          AutoWindowSizeWhenOpened="True">
+
+            <!-- Устанавливаем темную тему -->
+            <ad:DockingManager.Theme>
+                <ad:Vs2013DarkTheme/>
+            </ad:DockingManager.Theme>
+
+            <ad:LayoutRoot>
+                <ad:LayoutPanel Orientation="Vertical">
+
+                    <!-- Основной горизонтальный слой -->
+                    <ad:LayoutPanel Orientation="Horizontal">
+
+                        <!-- Левая панель (250px) -->
+                        <ad:LayoutAnchorablePaneGroup DockMinWidth="250">
+                            <ad:LayoutAnchorablePane>
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Портфель" ContentId="PortfolioPane">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="Портфель" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Инструменты" ContentId="InstrumentsPane" IsSelected="True">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="Инструменты" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Сделки" ContentId="TradesPane">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="Обезличенные сделки" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+                            </ad:LayoutAnchorablePane>
+                        </ad:LayoutAnchorablePaneGroup>
+
+                        <!-- Центральный документ (график) -->
+                        <ad:LayoutDocumentPaneGroup>
+                            <ad:LayoutDocumentPane>
+                                <ad:LayoutDocument Title="График BTC/USDT" ContentId="ChartDocument" IsSelected="True">
+                                    <Border Background="#FF1E1E1E">
+                                        <TextBlock Text="График" Foreground="White" FontSize="24"/>
+                                    </Border>
+                                </ad:LayoutDocument>
+                            </ad:LayoutDocumentPane>
+                        </ad:LayoutDocumentPaneGroup>
+
+                        <!-- Правая панель (250px) -->
+                        <ad:LayoutAnchorablePaneGroup DockMinWidth="250">
+                            <ad:LayoutAnchorablePane>
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Стакан" ContentId="OrderBookPane">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="Стакан цен" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Заявка" ContentId="OrderPane">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="Форма заявки" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Активные заявки" ContentId="ActiveOrdersPane">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="Активные заявки" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+
+                                <ad:LayoutAnchorable AutoHideMinHeight="250" Title="История" ContentId="HistoryPane">
+                                    <Border Background="#FF252526">
+                                        <TextBlock Text="История операций" Foreground="White"/>
+                                    </Border>
+                                </ad:LayoutAnchorable>
+                            </ad:LayoutAnchorablePane>
+                        </ad:LayoutAnchorablePaneGroup>
+                    </ad:LayoutPanel>
+
+                    <!-- Нижняя панель (150px) -->
+                    <ad:LayoutAnchorablePane DockHeight="150" DockMinHeight="100">
+                        <ad:LayoutAnchorable Title="Лог" ContentId="LogPane">
+                            <Border Background="#FF252526">
+                                <TextBlock Text="Торговый лог" Foreground="White"/>
+                            </Border>
+                        </ad:LayoutAnchorable>
+
+                        <ad:LayoutAnchorable Title="Консоль" ContentId="ConsolePane">
+                            <Border Background="#FF252526">
+                                <TextBlock Text="Системная консоль" Foreground="White"/>
+                            </Border>
+                        </ad:LayoutAnchorable>
+                    </ad:LayoutAnchorablePane>
+                </ad:LayoutPanel>
+            </ad:LayoutRoot>
+        </ad:DockingManager>
+    </Grid>
+</Window>
