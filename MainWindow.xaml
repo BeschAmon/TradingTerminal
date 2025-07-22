@@ -33,13 +33,12 @@
                             <ad:LayoutAnchorablePane>
                                 <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Портфель" ContentId="PortfolioPane">
                                     <Border Background="#FF252526">
-                                        <TextBlock Text="Портфель" Foreground="White"/>
+                                        <views:PortfolioView/>
                                     </Border>
                                 </ad:LayoutAnchorable>
 
                                 <ad:LayoutAnchorable AutoHideMinHeight="250" Title="Инструменты" ContentId="InstrumentsPane" IsSelected="True">
                                     <Border Background="#FF252526">
-                                        <TextBlock Text="Инструменты" Foreground="White"/>
                                     </Border>
                                 </ad:LayoutAnchorable>
 

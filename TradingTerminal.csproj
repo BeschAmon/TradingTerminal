@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\" />
     <Folder Include="ViewModels\Panels\" />
   </ItemGroup>
 
