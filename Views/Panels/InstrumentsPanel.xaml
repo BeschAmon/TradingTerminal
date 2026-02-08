@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="TradingTerminal.Views.Panels.InstrumentsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:models="clr-namespace:TradingTerminal"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="300">
+    <Border Background="#FF252526" Padding="8">
+        <Grid Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Инструменты"
+                       Foreground="White"
+                       FontSize="16"
+                       FontWeight="SemiBold"/>
+
+            <TextBox Grid.Row="1"
+                     Margin="0,8,0,0"
+                     Height="30"
+                     Text="Поиск по тикеру или рынку"
+                     Foreground="#FF9E9E9E"
+                     Background="#FF1E1E1E"
+                     BorderBrush="#FF3E3E42"
+                     Padding="8,4"/>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+                <Button Content="Крипто" Padding="10,4" Margin="0,0,6,0" Background="#FF0E639C" Foreground="White"/>
+                <Button Content="Акции" Padding="10,4" Margin="0,0,6,0" Background="#FF3E3E42" Foreground="White"/>
+                <Button Content="Фьючерсы" Padding="10,4" Background="#FF3E3E42" Foreground="White"/>
+            </StackPanel>
+
+            <Border Grid.Row="3" Margin="0,8,0,0" Background="#FF1E1E1E" BorderBrush="#FF3E3E42" BorderThickness="1">
+                <ListView Background="Transparent" BorderThickness="0" Foreground="White">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="2"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="6,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" SharedSizeGroup="InstrumentColumn"/>
+                                    <ColumnDefinition Width="80" SharedSizeGroup="PriceColumn"/>
+                                    <ColumnDefinition Width="60" SharedSizeGroup="ChangeColumn"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="{Binding Symbol}" FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Market}" Foreground="#FF9E9E9E" FontSize="11"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Price}"
+                                           Margin="12,0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"/>
+                                <TextBlock Grid.Column="2"
+                                           Text="{Binding Change}"
+                                           Margin="12,0,0,0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Foreground="{Binding ChangeColor}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type models:InstrumentItem}">
+                            <models:InstrumentItem Symbol="BTC/USDT" Market="Binance · Spot" Price="64 220" Change="+2.4%" ChangeColor="#FF4EC9B0"/>
+                            <models:InstrumentItem Symbol="ETH/USDT" Market="Binance · Spot" Price="3 420" Change="+1.1%" ChangeColor="#FF4EC9B0"/>
+                            <models:InstrumentItem Symbol="SOL/USDT" Market="Bybit · Spot" Price="148.6" Change="-0.8%" ChangeColor="#FFF48771"/>
+                            <models:InstrumentItem Symbol="AAPL" Market="NASDAQ" Price="193.5" Change="+0.3%" ChangeColor="#FF4EC9B0"/>
+                        </x:Array>
+                    </ListView.ItemsSource>
+                </ListView>
+            </Border>
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,8,0,0">
+                <TextBlock Text="Избранное: 3" Foreground="#FF9E9E9E"/>
+                <TextBlock Text="•" Foreground="#FF9E9E9E" Margin="6,0"/>
+                <TextBlock Text="Обновлено 2 сек назад" Foreground="#FF9E9E9E"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
